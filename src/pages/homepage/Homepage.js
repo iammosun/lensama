@@ -15,21 +15,14 @@ const Homepage = () => {
   useFetch('https://dummyjson.com/products/category/mens-watches',
     'https://dummyjson.com/products/category/womens-watches');
 
-  const hideCart = () => {
-    // document.getElementById('sidebarCart').style.display = 'block';
-  }
-
-
 
 
 
 
   return (
     <>
-      <div id='homeBody' onClick={hideCart}>
-
+      <div>
         <Navbar />
-
 
         <main className='mainContent'>
 
