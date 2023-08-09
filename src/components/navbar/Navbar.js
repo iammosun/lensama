@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import cart from './cart.png';
+import logo from './logo.png';
 
 
 
@@ -20,7 +21,7 @@ const Navbar = () => {
 
         <div className='nav1Container'>
           <ul className='flexRow'>
-            <li><img src="" alt="lensima logo" /></li>
+            <li><img id='lensamaLogo' src={logo} alt="lensima logo" /></li>
             <li><Link to='/'> Home</Link></li>
             <li><Link to='/shop'>Shop</Link></li>
             <li><Link to='/women'> Women</Link></li>

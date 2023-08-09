@@ -1,37 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { women, men } from '../../redux/WatchesSlice';
-// import useFetch from '../../hooks/useFetch';
+import useFetch from '../../hooks/useFetch';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
 
 
 
 const Homepage = () => {
-  const dispatch = useDispatch();
   const { menWatches } = useSelector(state => state.watchesSlice);
   const { womenWatches } = useSelector(state => state.watchesSlice);
 
-  // useFetch('https://dummyjson.com/products/category/mens-watches',
-  //   'https://dummyjson.com/products/category/womens-watches');
-  // useFetch('https://dummyjson.com/products/category/mens-watches')
-
-  useEffect(() => {
-    fetch('https://dummyjson.com/products/category/womens-watches', {
-      method: 'GET'
-
-    }).then(res => res.json())
-      .then(data => dispatch(women(data.products)));
-
-    fetch('https://dummyjson.com/products/category/mens-watches', {
-      method: 'GET'
-
-    }).then(res => res.json())
-      .then(data => { dispatch(men(data.products)) });
-  }, []);
-
+  useFetch('https://dummyjson.com/products/category/mens-watches',
+    'https://dummyjson.com/products/category/womens-watches');
 
   const hideCart = () => {
     // document.getElementById('sidebarCart').style.display = 'block';
@@ -117,7 +99,6 @@ const Homepage = () => {
 
         < Footer />
       </div>
-      {/* <Cart /> */}
     </>
   );
 }

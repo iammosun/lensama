@@ -1,3 +1,8 @@
+
+
+
+/* Global Styles_________________________________*/
+
 html {
   height: 100%;
   box-sizing: border-box;
@@ -15,12 +20,16 @@ body {
   padding: 0;
 }
 
-/* #homeBody{
-  max-width: 90%;
-} */
+#lensamaLogo{
+  width: 40px;
+  height: 40px;
+}
 
 
-/* Global Styles_________________________________*/
+
+
+
+/* other styles........................... */
 
 .mainContent {
   height: 100vw;
