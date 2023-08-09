@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import NavBar from '../../components/navbar/Navbar';
 import { changeQuantity, deleteFromCart } from '../../redux/CartSlice';
-
 
 
 
@@ -11,11 +11,13 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const { cart } = useSelector(state => state.cartSlice);
-  const { cartTotal: total } = useSelector(state => state.cartSlice);
+  //get the ids/keys of items in cart
   const itemIds = Object.keys(cart);
+  const { cartTotal: total } = useSelector(state => state.cartSlice);
 
 
   useEffect(() => {
+    //adding whatever in storage to cart
     sessionStorage.setItem('cart', JSON.stringify(cart));
     sessionStorage.setItem('total', JSON.stringify(total));
   }, [cart])
@@ -37,29 +39,21 @@ const Cart = () => {
 
   return (
     <>
-      <main id="sidebarCart" style={
-        {
-          top: 0, position: 'fixed',
-          backgroundColor: 'grey', width: 40 + 'vw',
-          overflowY: 'scroll',
-          height: 100 + '%', right: 0
-        }}>
+      <NavBar />
+      <div className='cart'>
 
-        <div className=''>
+        <div>
 
           <div className=''>
             <p>My basket</p>
           </div>
 
-          <div className=''>
+          <div className='cartBtns'>
+            <button><b>Continue Shopping</b></button>
             <button>close</button>
             <button>clear Basket</button>
-
           </div>
         </div>
-
-
-
 
 
         <div className='basketContents'>
@@ -86,7 +80,7 @@ const Cart = () => {
           <p><b>Total: {total}</b></p>
 
         </div>
-      </main>
+      </div>
     </>
   );
 

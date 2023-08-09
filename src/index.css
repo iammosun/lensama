@@ -25,6 +25,15 @@ body {
   height: 40px;
 }
 
+.navbarContainer{
+  height: 4rem;
+  background-color: rgb(224, 226, 227);
+  /* color: white; */
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
 
 
 
@@ -38,17 +47,22 @@ body {
   vertical-align: auto;
   margin: auto;
   padding: 0;
-  /* font-size: 0.9rem; */
   color: black;
 }
 
-.navbarContainer{
-  max-width: 90%;
+.navbar{
+  width: 90%;
 }
 
-#sidebarCart{
+.cart{
   /* display: none; */
   transition: display 2s;
+  /* position: 'fixed'; */
+  background-color: 'grey';
+  width: 50vw;
+  overflow-y: 'scroll';
+  height: 100%;
+  margin: auto;
 }
 
 .flexRow{
