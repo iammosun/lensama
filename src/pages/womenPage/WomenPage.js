@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
+import WatchesMap from '../../components/mappings/WatchesMap';
 
 
 const WomenPage = () => {
@@ -39,20 +39,15 @@ const WomenPage = () => {
         {/* Women Watches */}
         <div className='flexRow'>
           <h3>Women Watches</h3>
-          {/* <Link to='/women'>See All</Link> */}
         </div>
 
         <div className="flexRow">
-          {womenWatches.map(womenWatch => {
-            return (
-              <div key={womenWatch.id}><Link to={'/product/' + womenWatch.id}>
-                <img src={womenWatch.images[0]}
-                  width='260px' height='260px'
-                  alt="women watch" />
-                <p key={womenWatch.id}>{womenWatch.title} </p>
-              </Link></div>
-            );
-          })}
+          <WatchesMap
+            watches={womenWatches}
+            index1={0}
+            index2={Object.keys(womenWatches).length + 1}
+            btnAddToCart='hide'
+          />
         </div>
 
       </main >

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import useFetch from '../../hooks/useFetch';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
+import WatchesMap from '../../components/mappings/WatchesMap';
 
 
 
@@ -18,14 +19,12 @@ const Homepage = () => {
 
 
 
-
   return (
     <>
       <div>
         <Navbar />
 
         <main className='mainContent'>
-
           {/* banner ..............*/}
           <div className='bannerContainer flexRow'>
 
@@ -53,20 +52,14 @@ const Homepage = () => {
             <Link to='/men'>See All</Link>
           </div>
 
-
           <div className='flexRow flexRow2' >
-            {menWatches.slice(0, 3).map(menWatch => {
-              return (
-                <div key={menWatch.id}><Link to={'/product/' + menWatch.id}>
-                  <img src={menWatch.images[0]}
-                    width='200px' height='200px'
-                    alt="men watch" />
-                  <p key={menWatch.id}>{menWatch.title} </p>
-                </Link></div>
-              );
-            })}
+            <WatchesMap
+              watches={menWatches}
+              index1={0}
+              index2={3}
+              btnAddToCart='hide'
+            />
           </div>
-
 
 
           {/* Women Watches */}
@@ -75,18 +68,13 @@ const Homepage = () => {
             <Link to='/women'>See All</Link>
           </div>
 
-
           <div className="flexRow flexRow2">
-            {womenWatches.slice(0, 3).map(womenWatch => {
-              return (
-                <div key={womenWatch.id}><Link to={'/product/' + womenWatch.id}>
-                  <img src={womenWatch.images[0]}
-                    width='200px' height='200px'
-                    alt="women watch" />
-                  <p key={womenWatch.id}>{womenWatch.title} </p>
-                </Link></div>
-              );
-            })}
+            <WatchesMap
+              watches={womenWatches}
+              index1={0}
+              index2={3}
+              btnAddToCart='hide'
+            />
           </div>
         </main >
 

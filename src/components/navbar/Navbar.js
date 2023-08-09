@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='navbarContainer flexRow'>
+      <div className='navbarContainer greyBackground flexRow'>
         <div className='navBar flexRow'>
 
           <div className='nav1Container'>

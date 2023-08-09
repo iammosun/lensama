@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from "../../redux/CartSlice";
 
 
-const AddToCartBtn = ({ item, itemId }) => {
+const AddToCartBtn = ({ btnAddToCart, item, itemId }) => {
   const dispatch = useDispatch();
 
   const handleAddClick = (item, itemId) => {
@@ -12,7 +12,7 @@ const AddToCartBtn = ({ item, itemId }) => {
   }
 
   return (
-    <button id={'product' + itemId + 'toCart'} onClick={() =>
+    <button className={btnAddToCart} id={'product' + itemId + 'toCart'} onClick={() =>
       handleAddClick(item, itemId)}> Add to cart
     </button>
   );

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import { useSelector } from 'react-redux';
+
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
+import WatchesMap from '../../components/mappings/WatchesMap';
 
 
 const MenPage = () => {
-
   const { menWatches } = useSelector(state => state.watchesSlice);
+
 
   return (
     <>
@@ -36,32 +36,24 @@ const MenPage = () => {
         </div>
 
 
-        {/* Men Watches */}
+        {/* Men Watches.....*/}
         <div className='flexRow'>
           <h3>Mens Watches</h3>
-          {/* <Link to='/menPage'>See All</Link> */}
         </div>
 
 
         <div className="flexRow">
-          {menWatches.map(menWatch => {
-            return (
-              <div key={menWatch.id}><Link to={'/product/' + menWatch.id}>
-                <img src={menWatch.images[0]}
-                  width='260px' height='260px'
-                  alt="men watch" />
-                <p key={menWatch.id}>{menWatch.title} </p>
-              </Link></div>
-            );
-          })}
+          <WatchesMap
+            watches={menWatches}
+            index1={0}
+            index2={Object.keys(menWatches).length + 1}
+            btnAddToCart='hide'
+          />
         </div>
-
-
-
       </main >
-
       < Footer />
     </>
   );
 }
+
 export default MenPage;

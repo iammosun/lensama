@@ -19,16 +19,19 @@ body {
     sans-serif;
   padding: 0;
 }
+  
 
 #lensamaLogo{
   width: 40px;
   height: 40px;
 }
 
+.greyBackground{
+  background-color: rgb(224, 226, 227);
+}
+
 .navbarContainer{
   height: 4rem;
-  background-color: rgb(224, 226, 227);
-  /* color: white; */
   position: sticky;
   top: 0;
   width: 100%;
@@ -63,6 +66,18 @@ body {
   overflow-y: 'scroll';
   height: 100%;
   margin: auto;
+}
+
+.show{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
+.cartContainer{
+  height: 100vh;
 }
 
 .flexRow{

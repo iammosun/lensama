@@ -1,49 +1,33 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import NavBar from '../../components/navbar/Navbar';
-import { changeQuantity, deleteFromCart } from '../../redux/CartSlice';
+import Footer from '../../components/footer/footer';
+import CartItemsMap from '../../components/mappings/CartItemsMap';
 
 
 
 
 const Cart = () => {
-  const dispatch = useDispatch();
-
   const { cart } = useSelector(state => state.cartSlice);
-  //get the ids/keys of items in cart
-  const itemIds = Object.keys(cart);
   const { cartTotal: total } = useSelector(state => state.cartSlice);
 
-
   useEffect(() => {
-    //adding whatever in storage to cart
+    //adding any item in storage to cart
     sessionStorage.setItem('cart', JSON.stringify(cart));
     sessionStorage.setItem('total', JSON.stringify(total));
   }, [cart])
-
-
-  //change item quantity in cart
-  const quantityChange = (id, sign) => {
-    dispatch(changeQuantity({ id: id, sign: sign }));
-  }
-
-  //delete from cart
-  const deleteItem = (id) => {
-    dispatch(deleteFromCart(id));
-  }
 
 
 
 
 
   return (
-    <>
+    <div className='cartContainer'>
       <NavBar />
+
       <div className='cart'>
-
         <div>
-
           <div className=''>
             <p>My basket</p>
           </div>
@@ -55,35 +39,15 @@ const Cart = () => {
           </div>
         </div>
 
-
         <div className='basketContents'>
-          {itemIds.map(id => {
-
-            return (
-              <div key={Number(id)}>
-                <div>
-                  <button onClick={() => quantityChange(id, 'subtract')}>-</button>
-                  <button onClick={() => quantityChange(id, 'add')}>+</button>
-                </div>
-
-                <div>
-                  <img src={cart[id].images[0]} width='50px' height='50px' alt="" />
-                  <p>{cart[id].price * cart[id].quantity}</p>
-                  <p id='quantityField'>quantity: {cart[id].quantity}</p>
-                  <button onClick={() => deleteItem(id)}>X</button>
-                </div>
-              </div>
-            );
-          })
-          }
-
+          <CartItemsMap cart={cart} />
           <p><b>Total: {total}</b></p>
-
         </div>
-      </div>
-    </>
-  );
 
+      </div>
+      <Footer />
+    </div>
+  );
 }
 
 export default Cart;
