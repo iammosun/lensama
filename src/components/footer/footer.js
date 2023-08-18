@@ -3,11 +3,11 @@ import logo from '../navbar/logo.png';
 
 const Footer = () => {
   return (
-    <div className='greyBackground'>
+    <footer className='greyBackground'>
       <p>Developed by Mosun</p>
-      <img id='lensamaLogo' src={logo} alt="lensima logo" />
+      <img id='lensimaLogo' src={logo} alt="lensima logo" />
       <p>2023</p>
-    </div>
+    </footer>
   );
 }
 

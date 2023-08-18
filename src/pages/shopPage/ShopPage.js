@@ -14,22 +14,24 @@ const ShopPage = () => {
     <>
       <Navbar />
 
-      <main className='mainContent flexRow flexRow2'>
-        <div className="">
-          <WatchesMap
-            watches={menWatches}
-            index1={0}
-            index2={3}
-            addToCartBtn='show' />
-        </div>
+      <main>
+        <div className='mainContent flexRow flexRow2'>
+          <div className="flexRow">
+            <WatchesMap
+              watches={menWatches}
+              index1={0}
+              index2={3}
+              addToCartBtn='show' />
+          </div>
 
-        <div className="">
-          <WatchesMap
-            watches={womenWatches}
-            index1={0}
-            index2={3}
-            btnAddToCart='show'
-          />
+          <div className="flexRow">
+            <WatchesMap
+              watches={womenWatches}
+              index1={0}
+              index2={3}
+              btnAddToCart='show'
+            />
+          </div>
         </div>
 
         <button>Show More Items</button>

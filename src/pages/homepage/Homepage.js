@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 import useFetch from '../../hooks/useFetch';
+
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
 import WatchesMap from '../../components/mappings/WatchesMap';
+import { updateStorage } from '../../redux/CartSlice';
 
 
 
 const Homepage = () => {
+  const dispatch = useDispatch();
+
+  const { cart } = useSelector(state => state.cartSlice);
   const { menWatches } = useSelector(state => state.watchesSlice);
   const { womenWatches } = useSelector(state => state.watchesSlice);
 
@@ -17,12 +21,17 @@ const Homepage = () => {
     'https://dummyjson.com/products/category/womens-watches');
 
 
+  useEffect(() => {
+    dispatch(updateStorage());
+  }, [cart])
+
 
 
   return (
     <>
       <div>
         <Navbar />
+        {/* <Banner /> */}
 
         <main className='mainContent'>
           {/* banner ..............*/}
@@ -34,7 +43,7 @@ const Homepage = () => {
               </h2>
               <p>Buying eyewear should leave you happy and good-looking,
                 with money in your pocket. Glasses, sunglasses,
-                and contacts—we’ve got your eyes covered.</p>
+                and contacts—weve got your eyes covered.</p>
               <button>Shop Now</button>
             </div>
 
@@ -73,13 +82,12 @@ const Homepage = () => {
               watches={womenWatches}
               index1={0}
               index2={3}
-              btnAddToCart='hide'
+              ifShowAddBtn='hide'
             />
           </div>
-        </main >
-
+        </main>
         < Footer />
-      </div>
+      </div >
     </>
   );
 }

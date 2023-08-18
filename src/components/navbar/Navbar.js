@@ -8,7 +8,9 @@ import logo from './logo.png';
 
 
 const Navbar = () => {
-  const { cart: cartItems } = useSelector(state => state.cartSlice);
+  const { cartLength } = useSelector(state => state.cartSlice);
+
+
 
   return (
     <>
@@ -17,7 +19,7 @@ const Navbar = () => {
 
           <div className='nav1Container'>
             <ul className='flexRow'>
-              <li><img id='lensamaLogo' src={logo} alt="lensima logo" /></li>
+              <li><img id='lensimaLogo' src={logo} alt="lensima logo" /></li>
               <li><Link to='/'> Home</Link></li>
               <li><Link to='/shop'>Shop</Link></li>
               <li><Link to='/women'> Women</Link></li>
@@ -30,9 +32,8 @@ const Navbar = () => {
               <li><input type="text" placeholder='search product...' /></li>
               <li id='cartIcon'><Link to='/cart'>
                 <button>
-                  <img src={cart}
-                    alt="cart" width='20px' height='20px' />
-                  <p id='cartIconQuantity'><b>{Object.keys(cartItems).length}</b></p>
+                  <img src={cart} alt="cart" width='20px' height='20px' />
+                  <p id='cartIconQuantity'><b>{cartLength}</b></p>
                 </button></Link>
               </li>
               <li><button>Sign Up</button></li>
@@ -40,7 +41,6 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-
       </div >
     </>
   );

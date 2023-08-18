@@ -1,22 +1,46 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import NavBar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
 import CartItemsMap from '../../components/mappings/CartItemsMap';
+import { updateStorage, clearCart } from '../../redux/CartSlice';
 
 
 
 
 const Cart = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { cart } = useSelector(state => state.cartSlice);
+  const { cartLength } = useSelector(state => state.cartSlice);
   const { cartTotal: total } = useSelector(state => state.cartSlice);
 
+
   useEffect(() => {
-    //adding any item in storage to cart
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-    sessionStorage.setItem('total', JSON.stringify(total));
-  }, [cart])
+    dispatch(updateStorage());
+  }, [cart]);
+
+  const clearBasket = () => {
+    dispatch(clearCart());
+  };
+
+  //display cart items or cart is empty message
+  const displayCart = () => {
+    if (cartLength > 0) {
+      return (<>
+        <CartItemsMap cart={cart} />
+        <p> <b>Total: {total}</b></p>
+      </>);
+    }
+    return (<p>Your basket is empty</p>);
+  }
+
+  const onePageBack = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  }
 
 
 
@@ -33,20 +57,17 @@ const Cart = () => {
           </div>
 
           <div className='cartBtns'>
-            <button><b>Continue Shopping</b></button>
-            <button>close</button>
-            <button>clear Basket</button>
+            <button onClick={(e) => onePageBack(e)}><b>Continue Shopping</b></button>
+            <button onClick={clearBasket}>clear Basket</button>
           </div>
         </div>
 
         <div className='basketContents'>
-          <CartItemsMap cart={cart} />
-          <p><b>Total: {total}</b></p>
+          {displayCart()}
         </div>
-
-      </div>
+      </div >
       <Footer />
-    </div>
+    </div >
   );
 }
 

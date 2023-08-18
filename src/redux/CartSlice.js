@@ -1,17 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const cartFromSessionStorage = JSON.parse(sessionStorage.getItem('cart'));
-const totalFromSessionStorage = JSON.parse(sessionStorage.getItem('total'));
+const cartFromStorage = JSON.parse(sessionStorage.getItem('cart'));
+const totalFromStorage = JSON.parse(sessionStorage.getItem('cartTotal'));
+const cartLengthFromStorage = Number(JSON.parse(sessionStorage.getItem('cartLength'))) || 0;
 
+const updateSessionStorage = (cart, cartTotal, cartLength) => {
+  sessionStorage.setItem('cartLength', JSON.stringify(cartLength));
+  sessionStorage.setItem('cartTotal', JSON.stringify(cartTotal));
+  sessionStorage.setItem('cart', JSON.stringify(cart));
+}
 
 
 const CartSlice = createSlice({
   name: 'cart',
 
   initialState: {
-    cart: { ...cartFromSessionStorage },
-    cartTotal: Number(totalFromSessionStorage)
+    cart: { ...cartFromStorage },
+    cartTotal: Number(totalFromStorage),
+    cartLength: cartLengthFromStorage
   },
+
 
   reducers: {
 
@@ -33,30 +41,23 @@ const CartSlice = createSlice({
         state.cartTotal = data.price;
       }
 
-      //   // itemById.innerHTML = 'Remove from basket';
-      //   cartBtn = 'Remove from basket';
+      state.cartLength += 1;
+    },
 
 
-      // } else { //if 'Remove from Basket' is clicked
+    deleteFromCart: (state, action) => {
+      let id = (action.payload.itemId);
 
-      //   //change the price total in storage
-      //   let itemPrice = Number(item.price) * item.quantity;
-      //   total = Number(sessionStorage.getItem('total')) - itemPrice;
+      //change the cart total
+      let itemPrice = Number(state.cart[id].price) * state.cart[id].quantity;
+      state.cartTotal -= itemPrice;
 
-      //   //change num of items in storage
-      //   numOfItems = Number(sessionStorage.getItem('numOfItems')) - 1;
+      //delete the item from cart
+      let watchesId = Object.keys(state.cart);
+      let deletedItemId = watchesId.filter(watchId => watchId === String(id));
+      delete state.cart[deletedItemId];
 
-      //   delete cart[itemId];
-      //   items = cart;
-      //   // itemById.innerHTML = 'Add To Basket';
-      //   cartBtn = 'Add To Basket'
-      // }
-
-      // items[itemId].cartBtn = cartBtn;
-      // sessionStorage.setItem('cart', JSON.stringify(items));
-      // sessionStorage.setItem('numOfItems', numOfItems);
-      // sessionStorage.setItem('total', total);
-      // // sessionStorage.setItem('cartBtn', cartBtn)
+      state.cartLength -= 1;
     },
 
 
@@ -74,20 +75,18 @@ const CartSlice = createSlice({
       }
     },
 
+    clearCart: (state) => {
+      state.cart = {};
+      state.cartLength = 0;
+      state.cartTotal = 0;
+    },
 
-    deleteFromCart: (state, action) => {
-      let id = action.payload;
-
-      //change the cart total
-      let itemPrice = state.cart[id].price * state.cart[id].quantity;
-      state.cartTotal -= itemPrice;
-
-      //delete the item from cart
-      let deletedItemId = Object.keys(state.cart).filter(watchId => watchId === id);
-      delete state.cart[deletedItemId];
+    // called to set session storage for any changes in cart
+    updateStorage: (state) => {
+      updateSessionStorage(state.cart, state.cartTotal, state.cartLength);
     }
   }
 });
 
-export const { addToCart, changeQuantity, deleteFromCart } = CartSlice.actions;
+export const { addToCart, deleteFromCart, changeQuantity, clearCart, updateStorage } = CartSlice.actions;
 export default CartSlice.reducer;

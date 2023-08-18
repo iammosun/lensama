@@ -1,11 +1,19 @@
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { changeQuantity, deleteFromCart } from '../../redux/CartSlice';
+import { updateStorage } from '../../redux/CartSlice';
+
 
 
 const CartItemsMap = ({ cart: cart }) => {
-  const itemIds = Object.keys(cart);
   const dispatch = useDispatch();
+  const itemIds = Object.keys(cart);
+
+
+  useEffect(() => {
+    dispatch(updateStorage());
+  }, [cart])
 
   //change item quantity in cart
   const quantityChange = (id, sign) => {
@@ -13,8 +21,8 @@ const CartItemsMap = ({ cart: cart }) => {
   }
 
   //delete from cart
-  const deleteItem = (id) => {
-    dispatch(deleteFromCart(id));
+  const deleteItem = (itemId) => {
+    dispatch(deleteFromCart({ itemId: itemId }));
   }
 
 
