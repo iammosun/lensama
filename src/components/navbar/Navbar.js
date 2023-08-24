@@ -14,34 +14,28 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='navbarContainer greyBackground flexRow'>
-        <div className='navBar flexRow'>
+      <div className='navBarContainer'>
 
-          <div className='nav1Container'>
-            <ul className='flexRow'>
-              <li><img id='lensimaLogo' src={logo} alt="lensima logo" /></li>
-              <li><Link to='/'> Home</Link></li>
-              <li><Link to='/shop'>Shop</Link></li>
-              <li><Link to='/women'> Women</Link></li>
-              <li><Link to='/men'> Men</Link></li>
-            </ul>
-          </div>
+        <ul className='flexRow nav1Container'>
+          <li id='lensimaLogoLi' ><img id='lensimaLogo' src={logo} alt="lensima logo" /></li>
+          <li><Link to='/'> Home</Link></li>
+          <li><Link to='/shop'>Shop</Link></li>
+          <li><Link to='/women'> Women</Link></li>
+          <li><Link to='/men'> Men</Link></li>
+        </ul>
 
-          <div className='nav2Container'>
-            <ul className='flexRow'>
-              <li><input type="text" placeholder='search product...' /></li>
-              <li id='cartIcon'><Link to='/cart'>
-                <button>
-                  <img src={cart} alt="cart" width='20px' height='20px' />
-                  <p id='cartIconQuantity'><b>{cartLength}</b></p>
-                </button></Link>
-              </li>
-              <li><button>Sign Up</button></li>
-              <li><button>Sign In</button></li>
-            </ul>
-          </div>
-        </div>
-      </div >
+        <ul className='flexRow nav2Container'>
+          <li><input className='nav2Padding placeholder' type="text" placeholder='search product...' /></li>
+          <li className='nav2RightMargin'><Link to='/cart'>
+            <button aria-label="cart" id='cartIcon'>
+              <img src={cart} alt="cart" width='20px' height='20px' />
+              <p id='cartIconQuantity'><b>{cartLength}</b></p>
+            </button></Link>
+          </li>
+          <li><button aria-label="Sign up" className='nav2Padding signUpBtn'>Sign Up</button></li>
+          <li><button aria-label="Sign in" className='nav2Padding signInBtn'>Sign In</button></li>
+        </ul>
+      </div>
     </>
   );
 }

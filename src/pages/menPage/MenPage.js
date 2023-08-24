@@ -19,12 +19,12 @@ const MenPage = () => {
       <main className='mainContent'>
         <Banner text='Men Watches' bannerImg={menBanner} />
 
-        <div className="flexRow">
+        <div className="flexRow watchesTopPad">
           <WatchesMap
             watches={menWatches}
             index1={0}
             index2={Object.keys(menWatches).length + 1}
-            btnAddToCart='hide'
+            ifShowAddBtn='hide'
           />
         </div>
       </main>

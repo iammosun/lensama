@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { changeQuantity, deleteFromCart } from '../../redux/CartSlice';
-import { updateStorage } from '../../redux/CartSlice';
+import { changeQuantity, deleteFromCart, updateStorage } from '../../redux/CartSlice';
 
 
 

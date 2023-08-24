@@ -25,7 +25,7 @@ const WomenPage = () => {
             watches={womenWatches}
             index1={0}
             index2={Object.keys(womenWatches).length + 1}
-            btnAddToCart='hide'
+            ifShowAddBtn='hide'
           />
         </div>
       </main>

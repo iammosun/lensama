@@ -57,8 +57,8 @@ const Cart = () => {
           </div>
 
           <div className='cartBtns'>
-            <button onClick={(e) => onePageBack(e)}><b>Continue Shopping</b></button>
-            <button onClick={clearBasket}>clear Basket</button>
+            <button aria-label="continue shopping" onClick={(e) => onePageBack(e)}><b>Continue Shopping</b></button>
+            <button aria-label="Clear basket" onClick={clearBasket}>clear Basket</button>
           </div>
         </div>
 

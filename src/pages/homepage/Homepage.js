@@ -6,6 +6,8 @@ import useFetch from '../../hooks/useFetch';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
 import WatchesMap from '../../components/mappings/WatchesMap';
+import Banner from '../../components/banner/Banner';
+import homeBanner from '../../components/banner/homeBanner.jpg';
 import { updateStorage } from '../../redux/CartSlice';
 
 
@@ -31,55 +33,55 @@ const Homepage = () => {
     <>
       <div>
         <Navbar />
-        {/* <Banner /> */}
 
         <main className='mainContent'>
-          {/* banner ..............*/}
-          <div className='bannerContainer flexRow'>
-
-            <div className='banner1Container flexColumn'>
-              <h2>See <span className='notBold'>everything</span><br />
-                with <span className='notBold'>Clarity</span>
-              </h2>
-              <p>Buying eyewear should leave you happy and good-looking,
-                with money in your pocket. Glasses, sunglasses,
-                and contacts—weve got your eyes covered.</p>
-              <button>Shop Now</button>
-            </div>
-
-            <div className='banner2Container'>
-              <div>
-                <img src="" alt="banner" />
+          <Banner
+            text={
+              <div className='bannerText'>
+                <h1>
+                  Check <span className='notBold'>time</span><br />
+                  <span className='notBold'>in</span> Style
+                </h1>
+                <p className='smallFont'>Buying wristwatches should
+                  leave you happy and good-looking,
+                  with money in your pocket. Men and women Wristwatches?
+                  We've got your wrist covered.
+                </p>
+                <button aria-label="Shop now">Shop Now</button>
               </div>
-            </div>
-          </div>
+            }
+
+            bannerImg={homeBanner}
+          />
 
 
-          {/* Men Watches */}
-          <div className='flexRow flexRow2'>
-            <h3>Mens Watches</h3>
-            <Link to='/men'>See All</Link>
-          </div>
 
-          <div className='flexRow flexRow2' >
-            <WatchesMap
-              watches={menWatches}
-              index1={0}
-              index2={3}
-              btnAddToCart='hide'
-            />
-          </div>
-
-
-          {/* Women Watches */}
-          <div className='flexRow flexRow2'>
-            <h3>Women Watches</h3>
+          {/* Women Watches ..............*/}
+          <div className='flexRow flexRow2 watchesTopPad'>
+            <h2>Women Watches</h2>
             <Link to='/women'>See All</Link>
           </div>
 
           <div className="flexRow flexRow2">
             <WatchesMap
               watches={womenWatches}
+              index1={0}
+              index2={3}
+              ifShowAddBtn='hide'
+            />
+          </div>
+
+
+
+          {/* Men Watches .................*/}
+          <div className='flexRow flexRow2 watchesTopPad'>
+            <h2>Mens Watches</h2>
+            <Link to='/men'>See All</Link>
+          </div>
+
+          <div className='flexRow flexRow2' >
+            <WatchesMap
+              watches={menWatches}
               index1={0}
               index2={3}
               ifShowAddBtn='hide'

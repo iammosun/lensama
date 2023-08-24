@@ -58,6 +58,7 @@ const CartSlice = createSlice({
       delete state.cart[deletedItemId];
 
       state.cartLength -= 1;
+      // updateSessionStorage(state.cart , state.cartTotal, state.cartLength);
     },
 
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import logo from '../navbar/logo.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className='greyBackground'>
-      <p>Developed by Mosun</p>
+    <footer className='footer'>
+      <p>Developed by <Link to='https://github.com/iammosun' target="_blank">Mosun</Link></p>
       <img id='lensimaLogo' src={logo} alt="lensima logo" />
-      <p>2023</p>
+      <p>&copy; 2023</p>
     </footer>
   );
 }

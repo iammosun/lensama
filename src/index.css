@@ -23,7 +23,10 @@ body {
   padding: 0;
 }
 
-
+.centerAlign{
+  display: flex;
+  justify-content: center;
+}
  
   
 
@@ -32,27 +35,51 @@ body {
   height: 40px;
 }
 
-.greyBackground{
-  background-color: rgb(224, 226, 227);
-  bottom: 0;
-  width: 100%;
-}
-
-.navbarContainer{
+.navBarContainer{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 2em;
   height: 4rem;
   position: sticky;
   top: 0;
   width: 100%;
 }
 
-a{
-  text-decoration: none;
+.nav1Container a{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: rgb(83, 82, 82);
+  padding: 0.4em 1.3em;
+}
+
+.nav2Container li{
+  margin-left: 1em;
+}
+
+.navBarContainer .flexRow{
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.nav1Container a:hover{
+  background-color: rgb(242, 238, 238);
   color: black;
 }
 
+.nav1Container, .nav2Container{
+  margin-right: 2em;
+}
 
-footer{
- 
+#lensimaLogoLi{
+  justify-content: space-around;
+}
+
+a{
+  text-decoration: none;
+  color: black;
 }
 
 
@@ -70,14 +97,70 @@ footer{
   color: black;
 }
 
-.navbar{
-  width: 90%;
+.notBold{
+  font-weight: 300;
+}
+
+.bannerContainer{
+  padding: 0;
+  padding-top: 1em;
+}
+
+.banner1Container{
+  padding: 4em 0;
+  text-align: left;
+  vertical-align: auto;
+  margin: auto 0;
+  width: 50%;
+}
+
+.bannerText h1{
+  letter-spacing: 2px;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.smallFont{
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(62, 62, 62);
+  line-height: 25px;
+}
+
+.bannerText button{
+  padding: 1.4em;
+}
+
+.bigText{
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.watchesTopPad{
+  padding-top: 5em;
+  align-items: center;
+}
+
+.watchesTopPad a{
+  padding-top: 0.5em;
+  padding-bottom: 0;
+  text-decoration: underline;
+}
+
+#watchImgContainer{
+  padding-bottom: 2em;
+  padding: 20px;
+  transition: .5s ease-in-out;
+}
+
+.watchText{
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(83, 82, 82);
 }
 
 .cart{
-  /* display: none; */
   transition: display 2s;
-  /* position: 'fixed'; */
   background-color: 'grey';
   width: 50vw;
   overflow-y: 'scroll';
@@ -104,11 +187,6 @@ footer{
   justify-content: space-between;
 }
 
-.flexRow2{
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
-}
-
 img{
   object-fit: cover;
 }
@@ -119,21 +197,37 @@ ul{
 
 #cartIcon{
   position: relative;
+  border: none;
 }
 
 #cartIconQuantity{
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
   position: absolute;
   padding: 0;
   padding-top: 3.5px;
   border-radius: 50%;
   bottom: 20px;
-  right:-10px;
+  right:-7px;
   background: red;
   color: white;
   font-size: 11px;
   margin: 0;
+}
+
+.placeholder{
+  /* color: rgb(243, 237, 237); */
+  color: red;
+  border: 1px solid rgb(219, 214, 214);
+  font-size: 13px;
+}
+
+.nav2Padding{
+  padding: 0.8em;
+}
+
+.nav2RightMargin{
+  margin-right: 3em;
 }
 
 #watchImgContainer{
@@ -141,4 +235,64 @@ ul{
   height:300px;
   border: 1px solid rgb(211, 209, 209);
   text-decoration: none;
+  margin-top: 1.5em;
+}
+
+button{
+  cursor: pointer;
+}
+
+.signInBtn{
+  color: gray;
+  background-color: white;
+  border: white;
+}
+
+.signUpBtn, .bannerText button, .signInBtn:hover{
+  background-color: rgb(17, 17, 17);
+  color: white;
+  border: rgb(115, 114, 114);
+}
+
+.signUpBtn:hover{
+  background-color: rgb(59, 59, 59)
+}
+
+.mainWatchImg{
+  width: 100%;
+  height: 70%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.footer{
+  background-color: rgb(199, 201, 202);
+  margin-top: 20em;
+  bottom: 0;
+  height: 8em;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: smaller;
+}
+
+.footer a{
+  text-decoration: underline;
+}
+
+.productContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+.productContainer div{
+  width: 50%;
+}
+
+#backToShop{
+  text-decoration: underline;
 }

@@ -37,6 +37,7 @@ const AddToCartBtn = ({ ifShowAddBtn, item, itemId }) => {
 
   return (
     <button
+      aria-label={btnText}
       className={ifShowAddBtn}
       id={'product' + itemId + 'toCart'}
       onClick={() => handleAddClick(item, itemId)}>
