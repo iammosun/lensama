@@ -10,7 +10,6 @@ html {
   /* position: relative; */
 }
 
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -159,13 +158,84 @@ a{
   color: rgb(83, 82, 82);
 }
 
+.cartHeaderContainer{
+  align-items: center;
+}
+
+.cartContainer{
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  flex-direction: row;
+  z-index: 19;
+  transition: display 4s ease-in;
+  /* overflow-x: hidden; */
+}
+
 .cart{
-  transition: display 2s;
-  background-color: 'grey';
-  width: 50vw;
+  width: 35vw;
+  background-color: white;
   overflow-y: 'scroll';
-  height: 100%;
-  margin: auto;
+}
+
+.cartHalf{
+  border: none;
+  cursor: auto;
+  min-height: 100vh;
+  width: 65%;
+  background-color: transparent;
+}
+
+.cartMiniContainer{
+  width: 90%;
+
+}
+
+.flex{
+  /* display: inline-block; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.boxShadow1{
+  height: 5em;
+  border: 1px solid rgb(226, 223, 223);
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  
+}
+
+.cartFooter{
+  position: fixed;
+  max-width: 80%;
+  bottom: 0;
+  display: flex;
+  /* justify-content: space-around; */
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sign{
+  height: 50%;
+  width: 3em;
+  border: 1px solid rgb(226, 223, 223);
+}
+
+.cartBtns{
+  height: 50%;
+  border: 1px solid rgb(241, 237, 237);
+}
+
+.cartBtns button{
+  background-color: white;
+  border: 1px solid rgb(228, 226, 226);
+  padding: 8px;
+  color: rgb(77, 76, 76);
+  font-size: 12px;
 }
 
 .show{
@@ -174,10 +244,6 @@ a{
 
 .hide{
   display: none;
-}
-
-.cartContainer{
-  height: 100vh;
 }
 
 .flexRow{
@@ -296,3 +362,4 @@ button{
 #backToShop{
   text-decoration: underline;
 }
+

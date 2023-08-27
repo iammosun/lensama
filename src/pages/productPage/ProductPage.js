@@ -25,8 +25,8 @@ const ProductPage = () => {
 
   return (
     <>
+      <Navbar />
       <div className='mainContent'>
-        <Navbar />
         <div> <Link to='/shop' id='backToShop'>back to shop</Link></div>
         <div className='productContainer'>
 
