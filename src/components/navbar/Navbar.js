@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import UserDetails from '../userDetails/UserDetails';
 import Cart from '../../pages/cart/Cart';
 import cart from './cart.png';
 import logo from './logo.png';
@@ -9,8 +10,13 @@ import logo from './logo.png';
 
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const ff = document.getElementById('signInBtn');
+
   const { cartLength } = useSelector(state => state.cartSlice);
   const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState('');
+
 
 
   const toggleCart = () => {
@@ -25,7 +31,13 @@ const Navbar = () => {
       setIsOpen(false);
       cartIcon.removeAttribute('class');
     }
-    // cartIcon.className.toggle('toggleCart');
+  }
+
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (query === '') return;
+    navigate('/searchPage/' + query);
   }
 
 
@@ -36,7 +48,9 @@ const Navbar = () => {
       <div className='navBarContainer'>
 
         <ul className='flexRow nav1Container'>
-          <li id='lensimaLogoLi' ><img id='lensimaLogo' src={logo} alt="lensima logo" /></li>
+          <li id='lensimaLogoLi'>
+            <img id='lensimaLogo' src={logo} alt="lensima logo" />
+          </li>
           <li><Link to='/'> Home</Link></li>
           <li><Link to='/shop'>Shop</Link></li>
           <li><Link to='/women'> Women</Link></li>
@@ -44,33 +58,45 @@ const Navbar = () => {
         </ul>
 
         <ul className='flexRow nav2Container'>
-          <li><input
-            className='nav2Padding placeholder'
-            type="text" placeholder='search product...' />
+          <li>
+            <form onSubmit={onSubmit}>
+              <input
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                className='nav2Padding placeholder'
+                type="search"
+                placeholder='search product...' />
+            </form>
           </li>
-          <li className='nav2RightMargin'>
 
+          <li className='nav2RightMargin'>
             <button onClick={toggleCart}
-              // className={isOpen ? 'opened' : 'closed'}
               aria-label="cart" id='cartIcon'>
               <img src={cart} alt="cart" width='20px' height='20px' />
               <p id='cartIconQuantity'><b>{cartLength}</b></p>
             </button>
           </li>
 
-          <li><button aria-label="Sign up"
-            className='nav2Padding signUpBtn'>Sign Up
-          </button></li>
+          <li id='signUpBtn' className='signingBtn'>
+            <Link to='/signUp'
+              className='signUpBtn'
+              aria-label="Sign up">Sign Up
+            </Link>
+          </li>
 
-          <li><button aria-label="Sign in"
-            className='nav2Padding signInBtn'>Sign In
-          </button></li>
+          <li id='signInBtn' className='signingBtn'>
+            <Link to='/signIn'
+
+              className='signInBtn'
+              aria-label="Sign in">Sign In
+            </Link>
+          </li>
+
+          <li><UserDetails /></li>
         </ul>
-
-
-      </div>
-
+      </div >
     </>
   );
 }
+
 export default Navbar;

@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-// import NavBar from '../../components/navbar/Navbar';
-// import Footer from '../../components/footer/footer';
 import CartItemsMap from '../../components/mappings/CartItemsMap';
 import { updateStorage, clearCart } from '../../redux/CartSlice';
 
@@ -11,9 +8,8 @@ import { updateStorage, clearCart } from '../../redux/CartSlice';
 
 
 const Cart = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const [isOpen, setIsOpen] = useState(true);
+
   const { cart } = useSelector(state => state.cartSlice);
   const { cartLength } = useSelector(state => state.cartSlice);
   const { cartTotal: total } = useSelector(state => state.cartSlice);
@@ -27,27 +23,19 @@ const Cart = () => {
     dispatch(clearCart());
   };
 
-  //display cart items or cart is empty message
+  //display cart items or 'cart is empty' message
   const displayCart = () => {
-    if (cartLength > 0) {
+    if (cartLength > 0)
       return (
-        <>
+        <div className='cartItemsContainer'>
           <CartItemsMap cart={cart} />
-          <div className='cartFooter'>
-            <div><p>Total:<b> ${total}</b></p></div>
-            <button><h3>Check out</h3></button>
-          </div >
-        </>
-
+        </div>
       );
-    }
-    return (<p>Your basket is empty</p>);
-  }
 
-  // const onePageBack = (e) => {
-  //   e.preventDefault();
-  //   navigate(-1);
-  // }
+    return (
+      <p><small><i>Your basket is empty</i></small></p>
+    );
+  }
 
 
   const hideCart = () => {
@@ -56,7 +44,6 @@ const Cart = () => {
 
     const cartIcon = document.querySelector('.nav2RightMargin button');
     cartIcon.removeAttribute('class');
-    // cartIcon.className.toggle('toggleCart');
   }
 
 
@@ -66,14 +53,16 @@ const Cart = () => {
 
   return (
     <div className='cartContainer'>
-      {/* <NavBar /> */}
+
       <button onClick={hideCart} className="cartHalf"></button>
 
       <div className='cart'>
         <div className="cartMiniContainer">
           <div className='flexRow cartHeaderContainer'>
-            <div className=''>
-              <p>My basket</p>
+            <div>
+              <p><b>My basket: </b><small>&#40;{cartLength}
+                {cartLength > 1 ? ' items' : ' item'}&#41;</small>
+              </p>
             </div>
 
             <div className='cartBtns'>
@@ -89,14 +78,18 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className='basketContents'>
+          <div className=''>
             {displayCart()}
+            <div className='cartFooter'>
+              <p><small>Subtotal Amount:&nbsp;</small><span
+                className='h2'><b> ${total}</b></span>
+              </p>
+              <button><h3>Check out</h3></button>
+            </div >
           </div>
         </div>
       </div >
 
-
-      {/* <Footer /> */}
     </div >
   );
 }

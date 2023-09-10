@@ -1,13 +1,10 @@
 
-
-
 /* Global Styles_________________________________*/
 
 html {
   height: 100%;
   box-sizing: border-box;
   min-height: 100vh;
-  /* position: relative; */
 }
 
 *, *:before, *:after {
@@ -16,9 +13,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: sans-serif;
   padding: 0;
 }
 
@@ -27,7 +22,9 @@ body {
   justify-content: center;
 }
  
-  
+.h2{
+  font-size: 24px
+}
 
 #lensimaLogo{
   width: 40px;
@@ -40,18 +37,21 @@ body {
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
-  margin-top: 2em;
   height: 4rem;
   position: sticky;
   top: 0;
   width: 100%;
 }
 
+.navBarContainer, .footer{
+  width: 90%;
+}
+
 .nav1Container a{
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: rgb(83, 82, 82);
-  padding: 0.4em 1.3em;
+  padding: 0.4em 1.2em;
 }
 
 .nav2Container li{
@@ -60,7 +60,6 @@ body {
 
 .navBarContainer .flexRow{
   align-items: center;
-  /* justify-content: space-around; */
 }
 
 .nav1Container a:hover{
@@ -162,22 +161,45 @@ a{
   align-items: center;
 }
 
-.cartContainer{
+.addToCartBtn{
+  border: none;
+  border-radius: 5px;
   margin: 0;
+  color: white;
+  height: 40px;
+  width: 45%;
+  background-color: rgb(50, 50, 50);
+  transition: 0.5s ease-in-out;
+}
+
+.addToCartBtn:hover{
+  width: 48%;
+}
+
+.deleteCartItemBtn{
+  border-radius: 5px;
+}
+
+.cartContainer{
+  margin: auto;
   padding: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   display: flex;
   position: fixed;
   top: 0;
   flex-direction: row;
-  z-index: 19;
-  transition: display 4s ease-in;
-  /* overflow-x: hidden; */
+  z-index: 1;
+  /* transition: 4s ease-in; */
+}
+
+.cartItemsContainer{
+  overflow-y: scroll;
 }
 
 .cart{
   width: 35vw;
+  max-height: 100vh;
   background-color: white;
   overflow-y: 'scroll';
 }
@@ -186,13 +208,15 @@ a{
   border: none;
   cursor: auto;
   min-height: 100vh;
-  width: 65%;
+  width: 65vw;
   background-color: transparent;
 }
 
 .cartMiniContainer{
-  width: 90%;
-
+  height: 100vh;
+  box-shadow: 0 0 0 3px rgba(12, 7, 154, 0.2);
+  padding: 2em 30px;
+  min-width: 35vw;
 }
 
 .flex{
@@ -203,26 +227,57 @@ a{
 }
 
 .boxShadow1{
-  height: 5em;
+  height: 80%;
   border: 1px solid rgb(226, 223, 223);
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-  
-}
-
-.cartFooter{
-  position: fixed;
-  max-width: 80%;
-  bottom: 0;
-  display: flex;
-  /* justify-content: space-around; */
-  flex-direction: row;
+  box-shadow: 0 1px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
   justify-content: space-between;
 }
 
-.sign{
-  height: 50%;
-  width: 3em;
-  border: 1px solid rgb(226, 223, 223);
+.boxShadow1 .deleteCartItemBtn{
+  border: 1px solid rgb(193, 191, 191);
+  background-color: white;
+  margin: auto 3px;
+  height: 30px;
+  width: 30px;
+}
+
+.boxShadow1 p{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.boxShadow1 img{
+  border: 1px solid rgb(114, 111, 111);
+  margin: 5px 0 5px;
+}
+
+.alignCenter{
+ margin-top: auto;
+ margin-bottom: auto;
+}
+
+.cartFooter{
+  /* background-color: rgb(194, 32, 32); */
+  display: flex;
+  flex-direction: row;
+  min-width: 30vw;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 30px;
+}
+
+.cartFooter button{
+  background-color: rgb(11, 11, 11);
+  color: white;
+  border: none;
+  padding: 0px 30px;
+  transition: 0.5s ease;
+}
+
+.cartFooter button:hover{
+  border-radius: 8px;
 }
 
 .cartBtns{
@@ -238,6 +293,10 @@ a{
   font-size: 12px;
 }
 
+.deleteCartItemBtn:hover, .cartBtns button:hover{
+  background-color: rgb(238, 235, 235);
+  border-radius: 0.5px;
+}
 .show{
   display: block;
 }
@@ -282,30 +341,35 @@ ul{
 }
 
 .placeholder{
-  /* color: rgb(243, 237, 237); */
-  color: red;
   border: 1px solid rgb(219, 214, 214);
   font-size: 13px;
 }
 
+#quantityField{
+  color: gray;
+}
+
+.sign{
+  height: 100%;
+  width: 3em;
+  border: 1px solid rgb(226, 223, 223);
+}
+
+.sign:hover{
+  background-color: rgb(222, 220, 220);
+}
+
 .nav2Padding{
-  padding: 0.8em;
+  padding: 1em;
 }
 
 .nav2RightMargin{
   margin-right: 3em;
 }
 
-#watchImgContainer{
-  width:320px;
-  height:300px;
-  border: 1px solid rgb(211, 209, 209);
-  text-decoration: none;
-  margin-top: 1.5em;
-}
-
-button{
-  cursor: pointer;
+.signInBtn, .signUpBtn, .signInpageBtn{
+  font-size: smaller;
+  padding: 0.8em;
 }
 
 .signInBtn{
@@ -314,7 +378,7 @@ button{
   border: white;
 }
 
-.signUpBtn, .bannerText button, .signInBtn:hover{
+.signUpBtn, .bannerText button, .signInpageBtn, .signInBtn:hover{
   background-color: rgb(17, 17, 17);
   color: white;
   border: rgb(115, 114, 114);
@@ -322,6 +386,147 @@ button{
 
 .signUpBtn:hover{
   background-color: rgb(59, 59, 59)
+}
+
+.signingBtnContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.signingBtnContainer button{
+  padding: 5em;
+}
+
+.mainSigningContainer{
+  height: 70vh;
+  margin: 2em auto 8em;
+  width: 60%;
+  border: 1px solid rgb(202, 202, 203);
+  position: relative;
+}
+
+.topSigningContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3%;
+  min-height: 74%;
+}
+
+.bottomSigningContainer{
+  border: 1px solid rgb(202, 202, 203);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainSigningContainer small{
+  margin: 0 1.5em;
+  color: rgb(74, 73, 73);
+}
+
+.leftSigningContainer{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 48%;
+}
+
+.formContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer input{
+  border:1px solid rgb(202, 202, 203);
+  padding: 1.5em;
+  height: 38px;
+  margin: 10px 0;
+}
+
+.signBtnContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.signBtnContainer small{
+  text-decoration: underline;
+}
+
+.rightSigningContainer{
+  width: 45%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rightSigningContainer div{
+  width: 70%;
+  height: 15%;
+  margin-top: 1em;
+}
+
+.signBtnContainer button{
+  color: black;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.signBtnContainer button:hover{
+  color: white;
+}
+
+.gitHubLink, .googleLink, .fbLink{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fbLink{
+  background-color: rgba(69, 102, 251, 0.95);
+}
+
+.gitHubLink{
+  background-color: rgb(37, 37, 37);
+}
+
+.googleLink{
+  border: 1px solid rgb(202, 202, 203);
+  background-color: white;
+}
+
+.googleLink small{
+  color: black;
+}
+
+.fbLink small, .gitHubLink small{
+  color: white;
+}
+
+#watchImgContainer{
+  width:300px;
+  height:280px;
+  border: 1px solid rgb(211, 209, 209);
+  text-decoration: none;
+  margin-top: 1.5em;
+}
+
+button{
+  cursor: pointer;
 }
 
 .mainWatchImg{
@@ -332,14 +537,29 @@ button{
   background-position: center center;
 }
 
+.productDescription{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.productDescription button{
+  margin-left: 1.2em;
+}
+
+#backToShop{
+  font-size: 15px;
+  color: rgb(61, 61, 61);
+}
+
 .footer{
-  background-color: rgb(199, 201, 202);
-  margin-top: 20em;
+  background-color: white;
   bottom: 0;
   height: 8em;
-  width: 100%;
   display: flex;
-  justify-content: space-around;
+  margin: auto;
+  margin-top: 20em;
+  justify-content: space-between;
   align-items: center;
   font-size: smaller;
 }
@@ -363,3 +583,6 @@ button{
   text-decoration: underline;
 }
 
+.bottomSigningContainer a:hover{
+  text-decoration: underline;
+}

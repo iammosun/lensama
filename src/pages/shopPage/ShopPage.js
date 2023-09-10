@@ -17,7 +17,7 @@ const ShopPage = () => {
 
       <main>
         <div className='mainContent flexRow'>
-          <div className="flexRow">
+          <div className="flexRow flexRow2">
             <WatchesMap
               watches={allWatches}
               index1={0}

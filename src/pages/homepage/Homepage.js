@@ -19,6 +19,7 @@ const Homepage = () => {
   const { menWatches } = useSelector(state => state.watchesSlice);
   const { womenWatches } = useSelector(state => state.watchesSlice);
 
+
   useFetch('https://dummyjson.com/products/category/mens-watches',
     'https://dummyjson.com/products/category/womens-watches');
 
@@ -26,6 +27,7 @@ const Homepage = () => {
   useEffect(() => {
     dispatch(updateStorage());
   }, [cart])
+
 
 
 

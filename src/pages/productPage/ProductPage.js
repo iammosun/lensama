@@ -37,9 +37,9 @@ const ProductPage = () => {
           </div>
 
           <div className='productDescription'>
-            <p><b>{prod.title}</b></p>
-            <p>{prod.description}</p><br />
-            <h4>Price: ${prod.price}</h4>
+            <div><p><b>{prod.title}</b></p></div>
+            <div><small>{prod.description}</small></div><br />
+            <div><h4>Price: ${prod.price}</h4></div>
 
             <AddToCartBtn item={prod} itemId={prod.id} />
           </div>

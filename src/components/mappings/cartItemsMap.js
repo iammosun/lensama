@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { changeQuantity, deleteFromCart, updateStorage } from '../../redux/CartSlice';
+import {
+  changeQuantity, deleteFromCart, updateStorage
+} from '../../redux/CartSlice';
 
 
 
@@ -30,16 +32,29 @@ const CartItemsMap = ({ cart: cart }) => {
       return (
         <div key={Number(id)} className='flexRow boxShadow1'>
           <div className='flex'>
-            <button className='sign' onClick={() => quantityChange(id, 'subtract')}>-</button>
-            <button className='sign' onClick={() => quantityChange(id, 'add')}>+</button>
+            <button className='sign'
+              onClick={() => quantityChange(id, 'subtract')}>-
+            </button>
+
+            <button className='sign'
+              onClick={() => quantityChange(id, 'add')}>+
+            </button>
           </div>
 
-          {/* <div> */}
-          <img src={cart[id].images[0]} width='50px' height='50px' alt="" />
-          <p>{cart[id].price * cart[id].quantity}</p>
-          <p id='quantityField'>quantity: {cart[id].quantity}</p>
-          <button onClick={() => deleteItem(id)}>X</button>
-          {/* </div> */}
+          <img src={cart[id].images[0]} width='50px' heigth='50px' alt="" />
+
+          <div className='flexRow'>
+            <p><small id='quantityField'>quantity: &nbsp;</small></p>
+            <p ><b>{cart[id].quantity}</b></p>
+          </div>
+
+          <p><b>${
+            cart[id].price * cart[id].quantity
+          }.00</b></p>
+
+          <button className='deleteCartItemBtn'
+            onClick={() => deleteItem(id)}>X
+          </button>
         </div>
       );
     })
