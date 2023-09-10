@@ -9,9 +9,9 @@ import logo from './logo.png';
 
 
 
-const Navbar = () => {
+const Navbar = ({ ifShowSignInBtn = 'show', ifShowSignUpBtn = 'show' }) => {
   const navigate = useNavigate();
-  const ff = document.getElementById('signInBtn');
+  // const ff = document.getElementById('signInBtn');
 
   const { cartLength } = useSelector(state => state.cartSlice);
   const [isOpen, setIsOpen] = useState(false);
@@ -77,16 +77,15 @@ const Navbar = () => {
             </button>
           </li>
 
-          <li id='signUpBtn' className='signingBtn'>
+          <li id='signUpBtn' className={ifShowSignUpBtn + ' signingBtn'}>
             <Link to='/signUp'
               className='signUpBtn'
               aria-label="Sign up">Sign Up
             </Link>
           </li>
 
-          <li id='signInBtn' className='signingBtn'>
+          <li id='signInBtn' className={ifShowSignInBtn + ' signingBtn'}>
             <Link to='/signIn'
-
               className='signInBtn'
               aria-label="Sign in">Sign In
             </Link>

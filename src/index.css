@@ -84,7 +84,6 @@ a{
 
 
 /* other styles........................... */
-
 .mainContent {
   height: 100vw;
   max-width: 75%;
@@ -121,7 +120,7 @@ a{
 .smallFont{
   font-size: 16px;
   font-weight: 500;
-  color: rgb(62, 62, 62);
+  color: hwb(0 65% 33%);
   line-height: 25px;
 }
 
@@ -165,15 +164,13 @@ a{
   border: none;
   border-radius: 5px;
   margin: 0;
-  color: white;
-  height: 40px;
-  width: 45%;
-  background-color: rgb(50, 50, 50);
+  height: 30px;
+  width: 100%;
   transition: 0.5s ease-in-out;
 }
 
 .addToCartBtn:hover{
-  width: 48%;
+  width: 75%;
 }
 
 .deleteCartItemBtn{
@@ -198,7 +195,7 @@ a{
 }
 
 .cart{
-  width: 35vw;
+  width: 50vw;
   max-height: 100vh;
   background-color: white;
   overflow-y: 'scroll';
@@ -258,26 +255,30 @@ a{
 }
 
 .cartFooter{
-  /* background-color: rgb(194, 32, 32); */
+  min-width: 40vw;
   display: flex;
   flex-direction: row;
-  min-width: 30vw;
   justify-content: space-between;
   position: fixed;
   bottom: 0;
   margin-bottom: 30px;
+  height: 50px;
 }
 
 .cartFooter button{
   background-color: rgb(11, 11, 11);
   color: white;
   border: none;
-  padding: 0px 30px;
+  padding: 0px 25px;
   transition: 0.5s ease;
 }
 
 .cartFooter button:hover{
   border-radius: 8px;
+}
+
+.cartFooter button h3{
+  margin: 0;
 }
 
 .cartBtns{
@@ -297,6 +298,7 @@ a{
   background-color: rgb(238, 235, 235);
   border-radius: 0.5px;
 }
+
 .show{
   display: block;
 }
@@ -310,6 +312,21 @@ a{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.userDetailsContainer div{
+  color: rgb(61, 60, 60);
+  margin-left: 1em;
+}
+
+.userDetailsContainer:last-child button{
+  color: rgb(61, 60, 60);
+  border: 1px solid rgb(242, 237, 237)
+}
+
+.userDetailsContainer:last-child button:hover{
+  background-color: rgb(233, 232, 236);
+  text-decoration: underline;
 }
 
 img{
@@ -518,11 +535,11 @@ ul{
 }
 
 #watchImgContainer{
-  width:300px;
-  height:280px;
+  width: 280px;
+  height:230px;
   border: 1px solid rgb(211, 209, 209);
   text-decoration: none;
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 button{

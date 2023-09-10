@@ -27,8 +27,7 @@ const UserDetails = () => {  //user details in nav bar
       }
 
       dispatch(clearCart());
-      navigate('/');
-
+      navigate('/signIn');
     }).catch(err => console.log(err));
   }
 
@@ -44,12 +43,12 @@ const UserDetails = () => {  //user details in nav bar
   return (
     <>
       <div>{authUser ? //if user is signed in
-        <div>
+        <div className='flexRow userDetailsContainer'>
           {btns.forEach((btn) => { // remove sign in and sign up buttons
             btn.style.display = 'none'
           })}
 
-          <p>{authUser.displayName}</p>
+          <div><small>{authUser.displayName}</small></div>
 
           {authUser.photoURL ? // if photo is present
             <div>
@@ -61,14 +60,18 @@ const UserDetails = () => {  //user details in nav bar
             </div>
 
             : //put default pic if no photo
-            < img src={defaultPic} style={{
-              width: 35 + 'px',
-              height: 35 + 'px',
-              borderRadius: 50 + '%'
-            }} />
+            <div>
+              < img src={defaultPic} style={{
+                width: 35 + 'px',
+                height: 35 + 'px',
+                borderRadius: 50 + '%'
+              }} />
+            </div>
           }
 
-          <button onClick={userSignOut}> sign Out </button>
+          <div><button onClick={userSignOut}>
+            <small><b>Sign out</b></small> </button>
+          </div>
         </div>
 
         // empty <p> if no user is signed in

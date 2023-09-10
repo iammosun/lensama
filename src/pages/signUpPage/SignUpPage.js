@@ -21,7 +21,10 @@ const SignUpPage = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        ifShowSignInBtn='show'
+        ifShowSignUpBtn='hide'
+      />
 
       <div className="mainSigningContainer">
         <div className='topSigningContainer'>

@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 import {
   signInWithGoogle,
   SignWithEmailAndPassword
 } from '../../firebase_setup/firebase';
 import Navbar from '../../components/navbar/Navbar';
-// document.getElementById('signInBtn').style.display = 'none'
-
 
 
 
 const SignInPage = () => {
   const navigate = useNavigate();
-  // document.getElementById('signInBtn').style.display = 'none'
-
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +19,10 @@ const SignInPage = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        ifShowSignInBtn='hide'
+        ifShowSignUpBtn='show'
+      />
 
 
       <div className="mainSigningContainer">

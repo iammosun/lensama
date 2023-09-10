@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CartItemsMap from '../../components/mappings/CartItemsMap';
 import { updateStorage, clearCart } from '../../redux/CartSlice';
+import { auth } from '../../firebase_setup/firebase';
 
 
 
@@ -15,26 +16,30 @@ const Cart = () => {
   const { cartTotal: total } = useSelector(state => state.cartSlice);
 
 
+
   useEffect(() => {
     dispatch(updateStorage());
   }, [cart]);
+
 
   const clearBasket = () => {
     dispatch(clearCart());
   };
 
+
   //display cart items or 'cart is empty' message
   const displayCart = () => {
-    if (cartLength > 0)
+    if (cartLength > 0) {
       return (
         <div className='cartItemsContainer'>
           <CartItemsMap cart={cart} />
         </div>
       );
+    }
 
-    return (
-      <p><small><i>Your basket is empty</i></small></p>
-    );
+    return <small style={{ margin: 35 + '%' }}>
+      <i><b>Your basket is empty</b></i>
+    </small>
   }
 
 
@@ -45,6 +50,12 @@ const Cart = () => {
     const cartIcon = document.querySelector('.nav2RightMargin button');
     cartIcon.removeAttribute('class');
   }
+
+
+  const checkOut = (e) => (!auth.currentUser) ?
+    alert('You need to login to checkout')
+    : alert('feature not available')
+
 
 
 
@@ -78,13 +89,24 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className=''>
+          <div className='hehe'>
             {displayCart()}
             <div className='cartFooter'>
               <p><small>Subtotal Amount:&nbsp;</small><span
                 className='h2'><b> ${total}</b></span>
               </p>
-              <button><h3>Check out</h3></button>
+              <button
+                disable={(cartLength < 1) ? 'true' : 'false'}
+                style={{
+                  cursor: (cartLength < 1) ? 'not-allowed' : 'pointer',
+                  backgroundColor: (cartLength < 1) ? 'gray' : 'black'
+                }}
+
+                onClick={(cartLength > 0) //only check out if cart's not empty
+                  ? checkOut
+                  : console.log('cart Empty')}>
+                <h3>Check out</h3>
+              </button>
             </div >
           </div>
         </div>

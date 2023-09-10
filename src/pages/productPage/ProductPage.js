@@ -32,7 +32,7 @@ const ProductPage = () => {
 
           <div className='productMainImage'>
             <img src={prod.images[0]}
-              width='250px' height='250px'
+              width='200px' height='200px'
               alt="product main" />
           </div>
 
