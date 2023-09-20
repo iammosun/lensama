@@ -12,6 +12,7 @@ import SignUpPage from './pages/signUpPage/SignUpPage';
 import SignInPage from './pages/signInPage/SignInPage';
 import CheckoutStep1 from './pages/checkoutStep1/CheckoutStep1';
 import CheckoutStep2 from './pages/checkoutStep2/CheckoutStep2';
+import CheckoutStep3 from './pages/checkoutStep3/CheckoutStep3';
 
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkoutStep1' element={<CheckoutStep1 />} />
           <Route path='/checkoutStep2' element={<CheckoutStep2 />} />
+          <Route path='/checkoutStep3' element={<CheckoutStep3 />} />
           <Route path='/signUp' element={<SignUpPage />} />
           <Route path='/signIn' element={<SignInPage />} />
           <Route path='/' element={<Homepage />} />

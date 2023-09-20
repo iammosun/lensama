@@ -3,12 +3,17 @@ import { useSelector } from 'react-redux';
 
 import Navbar from '../../components/navbar/Navbar';
 import CheckoutHeader from '../../components/checkoutHeader/CheckoutHeader';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const CheckoutStep2 = () => {
+  const navigate = useNavigate();
   const { cartTotal: total } = useSelector(state => state.cartSlice);
   const [newTotal, setNewTotal] = useState(total);
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [shippingAdd, setShippingAdd] = useState('');
+
 
   const totalCalc = (e) => {
     if (e.target.checked === true) {
@@ -16,6 +21,18 @@ const CheckoutStep2 = () => {
     } else {
       setNewTotal(total);
     }
+  }
+
+
+  const checkInputs = () => {
+    if (fullName.length > 2
+      && email.includes('@')
+      && shippingAdd.length > 5) {
+      navigate('/checkoutStep3');
+    } else {
+      console.log('hey')
+    }
+
   }
 
 
@@ -38,15 +55,24 @@ const CheckoutStep2 = () => {
           <form action="">
             <div>
               <label htmlFor="fullName"><small>&#42; Full Name</small></label>
-              <input type="text" required />
+              <input on type="text"
+                onChange={e => setFullName(e.target.value)}
+                required />
             </div>
             <div>
               <label htmlFor="email"><small>&#42; Email Address</small></label>
-              <input type="text" required />
+              <input type="text"
+                onChange={e => setEmail(e.target.value)}
+                required />
             </div>
             <div>
-              <label htmlFor="shippingAdd"><small>&#42; Shipping Address</small></label>
-              <input type="text" required />
+              <label
+                htmlFor="shippingAdd">
+                <small>&#42; Shipping Address</small>
+              </label>
+              <input type="text"
+                onChange={e => setShippingAdd(e.target.value)}
+                required />
             </div>
             <div>
               <label
@@ -69,7 +95,10 @@ const CheckoutStep2 = () => {
           <div id='shippingOptionContainer'>
             <form>
               <div id='shippingOption'>
-                <input onClick={(e) => totalCalc(e)} type="checkbox" id='checkIfChecked' />
+                <input
+                  onClick={(e) => totalCalc(e)}
+                  type="checkbox" id='checkIfChecked'
+                />
                 <label
                   htmlFor="shippingOption">
                   <small>International Shipping<span> 7-14 days</span></small>
@@ -78,6 +107,7 @@ const CheckoutStep2 = () => {
             </form>
             <p><b>$50.00</b></p>
           </div>
+
         </div>
       </div>
 
@@ -98,10 +128,11 @@ const CheckoutStep2 = () => {
 
       <div className="checkoutBtnsContainer">
         <Link to='/checkoutStep1' className="">&larr; Go Back</Link>
-        <Link to='/checkoutStep3' id="checkoutNextStepBtn">Go To Payment &rarr;</Link>
+        <button
+          onClick={checkInputs}
+          id="checkoutNextStepBtn">Go To Payment &rarr;
+        </button>
       </div>
-
-
     </>
   )
 }

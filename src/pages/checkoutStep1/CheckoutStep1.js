@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import CheckoutHeader from '../../components/checkoutHeader/CheckoutHeader';
-// import CartItemsMap from '../../components/mappings/CartItemsMap';
+import React, { useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
+import CheckoutHeader from '../../components/checkoutHeader/CheckoutHeader';
 import Navbar from '../../components/navbar/Navbar';
-import { useNavigate } from 'react-router-dom';
 
 import {
   changeQuantity, deleteFromCart, updateStorage
@@ -22,7 +22,6 @@ const CheckoutStep1 = () => {
 
   useEffect(() => {
     dispatch(updateStorage());
-    // setItemIds(Object.keys(cart));
   }, [cart])
 
   //change item quantity in cart
@@ -90,9 +89,14 @@ const CheckoutStep1 = () => {
             <p><small>Subtotal Amount:&nbsp;</small><span
               className='h2'><b> ${total}</b></span>
             </p>
+
             <button id='continueShopBtn'>
-              <h3><small>Continue Shopping</small></h3>
+              <Link
+                to='/shop'
+                className=""><small>&larr; Continue Shopping</small>
+              </Link>
             </button>
+
             <button
               disable={(cartLength < 1) ? 'true' : 'false'}
               style={{
@@ -100,19 +104,11 @@ const CheckoutStep1 = () => {
                 backgroundColor: (cartLength < 1) ? 'gray' : 'black'
               }}
               onClick={onDirectToStep2}
-
-            // onClick={(cartLength > 0) //only check out if cart's not empty
-            //   ? checkOut
-            //   : console.log('cart Empty')}>
             >
               <h3>Go To Shipping &rarr;</h3>
             </button>
-
-
           </div >
         </div>
-
-
       </div>
     </>
   )
