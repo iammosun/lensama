@@ -208,11 +208,6 @@ justify-content: space-between;
   top: 0;
   flex-direction: row;
   z-index: 1;
-  /* transition: 4s ease-in; */
-}
-
-.cartItemsContainer{
-  /* overflow-y: scroll; */
 }
 
 .cart{
@@ -266,7 +261,6 @@ justify-content: space-between;
 }
 
 .boxShadow1 img{
-  /* border: 1px solid rgb(114, 111, 111); */
   margin: 5px 0 5px;
 }
 
