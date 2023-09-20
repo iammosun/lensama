@@ -20,7 +20,7 @@ const WomenPage = () => {
       <main className='mainContent'>
         <Banner text='Women Glasses' bannerImg={womenBanner} />
 
-        <div className="flexRow">
+        <div className="flexRow watchesTopPad">
           <WatchesMap
             watches={womenWatches}
             index1={0}

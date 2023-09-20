@@ -57,12 +57,13 @@ const SignInPage = () => {
               />
             </div>
 
-            {/* <div className="signBtnContainer"> */}
-            <Link to=''><small>forgot password?</small></Link>
-            <button type='submit'><Link to='' className='signInBtn'>
-              Sign In
-            </Link></button>
-            {/* </div> */}
+            <div className="signBtnContainer">
+              <div><Link to=''><small>forgot password?</small></Link></div>
+              <button id='signBtnContainer'
+                type='submit'>
+                Sign In &rarr;
+              </button>
+            </div>
           </form>
 
           <div className="rightSigningContainer">

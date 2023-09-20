@@ -70,7 +70,7 @@ export const signUpWithEmailAndPassword = (
       updateProfile(auth.currentUser, {
         displayName: displayName
       })
-      console.log(userCredential);
+      console.log(displayName);
       navigateToHome('/');
 
     }).catch((err) => {

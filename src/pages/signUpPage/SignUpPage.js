@@ -67,12 +67,13 @@ const SignUpPage = () => {
                 required
               />
             </div>
-            {/* <div className="signingBtnContainer"> */}
-            <div> </div>
-            <button>
-              <Link type='submit' to='' className='signInpageBtn'>Sign Up</Link>
-            </button>
-            {/* </div> */}
+
+            <div className='signingBtnContainer'>
+              <div> </div>
+              <button type='submit'
+                className='signInpageBtn'>Sign Up &rarr;
+              </button>
+            </div>
           </form>
 
           <div className="rightSigningContainer">
