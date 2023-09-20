@@ -1,9 +1,8 @@
-
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
-// import { getFirestore } from "firebase/firestore";
-
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
 
 import {
   createUserWithEmailAndPassword,
@@ -14,8 +13,6 @@ import {
   signInWithEmailAndPassword
 } from 'firebase/auth';
 
-
-//Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCGjeuyenK1pMBDYe7oxx_u6MI_SIZOXq4",
   authDomain: "lensama-1c295.firebaseapp.com",
@@ -26,25 +23,24 @@ const firebaseConfig = {
   measurementId: "G-1JZ6QDZTHS"
 };
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// export const firestore = getFirestore(app);
 export const auth = getAuth(app);
-
+export const db = getFirestore(app);
 
 
 //signing in with email and password
-export const SignWithEmailAndPassword = (e, email, password) => {
+export const SignWithEmailAndPassword = (e, email, password, navigateToHome) => {
   e.preventDefault();
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      navigateToHome('/');
       console.log(userCredential);
-      return true;
+      return;
 
     }).catch((err) => {
       console.log(err);
-      return false;
+      return;
     });
 }
 
@@ -55,9 +51,7 @@ const googleProvider = new GoogleAuthProvider();
 export const signInWithGoogle = (e, navigateToHome) => {
   signInWithPopup(auth, googleProvider).then(res => {
     e.preventDefault();
-    console.log(res)
     navigateToHome('/');
-    return true;
 
   }).catch(err => {
     console.log(err);
@@ -78,10 +72,8 @@ export const signUpWithEmailAndPassword = (
       })
       console.log(userCredential);
       navigateToHome('/');
-      return true;
 
     }).catch((err) => {
       console.log(err);
-      return false;
     });
 }

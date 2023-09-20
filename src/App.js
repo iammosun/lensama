@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import handleSubmit from './handles/handlesubmit';
-import { useRef } from 'react';
 
 import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/shopPage/ShopPage';
@@ -12,29 +10,16 @@ import WomenPage from './pages/womenPage/WomenPage';
 import Cart from './pages/cart/Cart';
 import SignUpPage from './pages/signUpPage/SignUpPage';
 import SignInPage from './pages/signInPage/SignInPage';
+import CheckoutStep1 from './pages/checkoutStep1/CheckoutStep1';
+import CheckoutStep2 from './pages/checkoutStep2/CheckoutStep2';
 
 
 
 
 function App() {
-  const dataRef = useRef();
-  const hey = {
-    name: 'haha'
-  }
-
-  const submithandler = (e) => {
-    e.preventDefault()
-    handleSubmit(hey)
-    dataRef.current.value = ""
-  }
 
   return (
     <div className='App'>
-      {/* <form onSubmit={submithandler}>
-        <input type="text" ref={dataRef} />
-        <button type="submit">Save</button>
-      </form> */}
-
 
       <BrowserRouter>
         <Routes>
@@ -44,13 +29,13 @@ function App() {
           <Route path='/men' element={<MenPage />} />
           <Route path='/women' element={<WomenPage />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/checkoutStep1' element={<CheckoutStep1 />} />
+          <Route path='/checkoutStep2' element={<CheckoutStep2 />} />
           <Route path='/signUp' element={<SignUpPage />} />
           <Route path='/signIn' element={<SignInPage />} />
           <Route path='/' element={<Homepage />} />
         </Routes>
       </BrowserRouter>
-
-
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -19,6 +19,11 @@ const ProductPage = () => {
   const product = watches.filter(watch => watch.id === Number(id));
   const prod = product[0];
   const category = prod.category === 'womens-watches' ? 'womenWatches' : 'menWatches';
+  const [mainImg, setMainImg] = useState(prod.images[0]);
+
+  const onChangeMainImg = (query) => {
+    setMainImg(query);
+  }
 
 
 
@@ -27,20 +32,38 @@ const ProductPage = () => {
     <>
       <Navbar />
       <div className='mainContent'>
-        <div> <Link to='/shop' id='backToShop'>back to shop</Link></div>
+        <div id='backToShopBtnContainer'>
+          <Link to='/shop' id='backToShopBtn'><b>Back to shop</b></Link>
+        </div>
         <div className='productContainer'>
 
-          <div className='productMainImage'>
-            <img src={prod.images[0]}
-              width='200px' height='200px'
+          <div id="miniProductImagesContainer">
+            <div onClick={() => onChangeMainImg(prod.images[0])}>
+              <img src={prod.images[0]}
+                height='80px'
+                alt="glasses" />
+            </div>
+            <div onClick={() => onChangeMainImg(prod.images[1])}>
+              <img src={prod.images[1]}
+                height='80px'
+                alt="glasses" />
+            </div>
+            <div onClick={() => onChangeMainImg(prod.images[2])}>
+              <img src={prod.images[2]}
+                height='80px'
+                alt="glasses" />
+            </div>
+          </div>
+          <div className='productMainImg'>
+            <img src={mainImg}
+              width='400px' height='250px'
               alt="product main" />
           </div>
 
-          <div className='productDescription'>
+          <div className='productDescriptionContainer'>
             <div><p><b>{prod.title}</b></p></div>
-            <div><small>{prod.description}</small></div><br />
-            <div><h4>Price: ${prod.price}</h4></div>
-
+            <div><small>{prod.description}</small></div>
+            <div><h2>${prod.price}.00</h2></div>
             <AddToCartBtn item={prod} itemId={prod.id} />
           </div>
         </div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import useFetch from '../../hooks/useFetch';
 
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
@@ -9,7 +8,7 @@ import WatchesMap from '../../components/mappings/WatchesMap';
 import Banner from '../../components/banner/Banner';
 import homeBanner from '../../components/banner/homeBanner.jpg';
 import { updateStorage } from '../../redux/CartSlice';
-
+import useFetch from '../../hooks/useFetch';
 
 
 const Homepage = () => {
@@ -20,15 +19,15 @@ const Homepage = () => {
   const { womenWatches } = useSelector(state => state.watchesSlice);
 
 
-  useFetch('https://dummyjson.com/products/category/mens-watches',
-    'https://dummyjson.com/products/category/womens-watches');
+  // useFetch('https://dummyjson.com/products/category/womens-watches',
+  //   'https://dummyjson.com/products/category/mens-watches');
 
+
+  useFetch();
 
   useEffect(() => {
     dispatch(updateStorage());
   }, [cart])
-
-
 
 
   return (
@@ -40,16 +39,16 @@ const Homepage = () => {
           <Banner
             text={
               <div className='bannerText'>
-                <h1>
-                  Check <span className='notBold'>time</span><br />
+                <h3>
+                  See <span className='notBold'>the world</span><br />
                   <span className='notBold'>in</span> Style
-                </h1>
-                <p className='smallFont'>Buying wristwatches should
+                </h3>
+                <p className='smallFont'><b>Buying wristwatches should
                   leave you happy and good-looking,
                   with money in your pocket. Men and women Wristwatches?
                   We've got your wrist covered.
-                </p>
-                <button aria-label="Shop now">Shop Now</button>
+                </b></p>
+                <button aria-label="Shop now">Shop Now &rarr;</button>
               </div>
             }
 
@@ -60,8 +59,8 @@ const Homepage = () => {
 
           {/* Women Watches ..............*/}
           <div className='flexRow flexRow2 watchesTopPad'>
-            <h2>Women Watches</h2>
-            <Link to='/women'>See All</Link>
+            <h1>Women Watches</h1>
+            <Link to='/women'><b>See All</b></Link>
           </div>
 
           <div className="flexRow flexRow2">
@@ -77,8 +76,8 @@ const Homepage = () => {
 
           {/* Men Watches .................*/}
           <div className='flexRow flexRow2 watchesTopPad'>
-            <h2>Mens Watches</h2>
-            <Link to='/men'>See All</Link>
+            <h1>Mens Watches</h1>
+            <Link to='/men'><b>See All</b></Link>
           </div>
 
           <div className='flexRow flexRow2' >

@@ -6,17 +6,16 @@ import UserDetails from '../userDetails/UserDetails';
 import Cart from '../../pages/cart/Cart';
 import cart from './cart.png';
 import logo from './logo.png';
+import logo2 from './logo2.png';
 
 
 
 const Navbar = ({ ifShowSignInBtn = 'show', ifShowSignUpBtn = 'show' }) => {
   const navigate = useNavigate();
-  // const ff = document.getElementById('signInBtn');
 
   const { cartLength } = useSelector(state => state.cartSlice);
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
-
 
 
   const toggleCart = () => {
@@ -48,8 +47,11 @@ const Navbar = ({ ifShowSignInBtn = 'show', ifShowSignUpBtn = 'show' }) => {
       <div className='navBarContainer'>
 
         <ul className='flexRow nav1Container'>
-          <li id='lensimaLogoLi'>
-            <img id='lensimaLogo' src={logo} alt="lensima logo" />
+          <li>
+            <img id='lensamaLogo2' src={logo2} alt="lensama logo2" />
+          </li>
+          <li id='lensamaLogoLi'>
+            <img id='lensamaLogo' src={logo} alt="lensama logo" />
           </li>
           <li><Link to='/'> Home</Link></li>
           <li><Link to='/shop'>Shop</Link></li>

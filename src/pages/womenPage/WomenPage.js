@@ -18,7 +18,7 @@ const WomenPage = () => {
       <Navbar />
 
       <main className='mainContent'>
-        <Banner text='Women Watches' bannerImg={womenBanner} />
+        <Banner text='Women Glasses' bannerImg={womenBanner} />
 
         <div className="flexRow">
           <WatchesMap

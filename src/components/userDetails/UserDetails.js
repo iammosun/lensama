@@ -48,7 +48,7 @@ const UserDetails = () => {  //user details in nav bar
             btn.style.display = 'none'
           })}
 
-          <div><small>{authUser.displayName}</small></div>
+          <div><small><b>{authUser.displayName}</b></small></div>
 
           {authUser.photoURL ? // if photo is present
             <div>

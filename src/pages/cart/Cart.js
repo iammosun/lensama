@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import CartItemsMap from '../../components/mappings/CartItemsMap';
 import { updateStorage, clearCart } from '../../redux/CartSlice';
 import { auth } from '../../firebase_setup/firebase';
+// import CheckoutStep1 from '../checkoutStep1/CheckoutStep1';
 
 
 
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { cart } = useSelector(state => state.cartSlice);
   const { cartLength } = useSelector(state => state.cartSlice);
@@ -52,9 +55,9 @@ const Cart = () => {
   }
 
 
-  const checkOut = (e) => (!auth.currentUser) ?
+  const checkOut = () => (!auth.currentUser) ?
     alert('You need to login to checkout')
-    : alert('feature not available')
+    : navigate('/checkoutStep1');
 
 
 

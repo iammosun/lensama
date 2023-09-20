@@ -9,15 +9,20 @@ const WatchesMap = ({ watches, index1, index2, ifShowAddBtn }) => {
 
   return (
     watches.slice(index1, index2).map(watch => {
+
       return (
         <div id='watchImgContainer' key={watch.id}>
           <Link to={'/product/' + watch.id} >
-            <div className='mainWatchImg'
-              style={{ backgroundImage: `url(${watch.images[0]})` }}>
+            <div className='mainWatchImgContainer'>
+              <img className='mainWatchImg'
+                src={watch.images[0]} height='100%' width='100%' alt='watch'>
+              </img>
             </div>
-            <p className='watchText'
-              key={watch.id}>
-              <small><b>{watch.title}</b></small>
+            <div className='watchText'>
+              <h3><b>{watch.title}</b></h3>
+            </div>
+            <p className='watchBrand'>
+              <b><i>{watch.brand}</i></b>
             </p>
           </Link>
 
