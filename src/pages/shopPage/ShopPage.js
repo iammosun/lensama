@@ -35,7 +35,7 @@ const ShopPage = () => {
                     <div className='watchText'>
                       <h3><b>{watch.title}</b></h3>
                     </div>
-                    <p className='watchBrand'>
+                    <p id='watchBrand'>
                       <b><i>{watch.brand}</i></b>
                     </p>
                   </Link>

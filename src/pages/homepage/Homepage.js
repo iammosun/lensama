@@ -48,7 +48,7 @@ const Homepage = () => {
                   with money in your pocket. Men and women Wristwatches?
                   We've got your wrist covered.
                 </b></p>
-                <button aria-label="Shop now">Shop Now &rarr;</button>
+                <Link to='/shop' aria-label="Shop now"><b>Shop Now &rarr;</b></Link>
               </div>
             }
 

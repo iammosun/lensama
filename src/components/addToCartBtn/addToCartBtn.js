@@ -51,7 +51,10 @@ const AddToCartBtn = ({ ifShowAddBtn, item, itemId }) => {
       className={ifShowAddBtn + ' addToCartBtn'}
       id={'product' + itemId + 'toCart'}
       onClick={() => handleAddClick(item, itemId)}
-      style={{ backgroundColor: bgColor, color: fontColor }}
+      style={{
+        backgroundColor: bgColor,
+        color: fontColor
+      }}
     >
       {btnText}
     </button>

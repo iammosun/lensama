@@ -170,11 +170,21 @@ justify-content: space-between;
   transition: .5s ease-in-out;
 }
 
-.watchText, .watchBrand{
+.watchText{
   margin: 0;
   padding: 0;
   font-size: 15px;
   font-weight: 500;
+}
+
+.watchText h3{
+  margin: 0;
+  color: black;
+}
+
+.watchText, #watchBrand{
+  text-align: left;
+  margin-left: 0.5em;
   color: rgb(83, 82, 82);
 }
 
@@ -188,10 +198,6 @@ justify-content: space-between;
   height: 40px;
   width: 100%;
   transition: 0.2s ease-in-out;
-}
-
-.addToCartBtn:hover{
-  font-weight: bold;
 }
 
 .deleteCartItemBtn{
@@ -410,10 +416,15 @@ ul{
   border: white;
 }
 
-.signUpBtn, .bannerText button, .signInpageBtn, .signInBtn:hover{
+.signUpBtn, .bannerText a, .signInpageBtn, .signInBtn:hover{
   background-color: rgb(17, 17, 17);
   color: white;
   border: rgb(115, 114, 114);
+}
+
+.bannerText a{
+  font-size: 15px;
+  padding: 1em;
 }
 
 .signUpBtn:hover{
@@ -569,7 +580,7 @@ ul{
 #watchImgContainer{
   padding: 0;
   width: 330px;
-  height: 280px;
+  height: 250px;
   border: 1px solid rgb(227, 226, 226);
   text-decoration: none;
   margin-top: 1.5em;
@@ -578,7 +589,7 @@ ul{
 .mainWatchImgContainer{
   background-color: rgb(246, 245, 245);
   width: 100%;
-  height: 70%;
+  height: 60%;
 }
 
 .watchImgContainer p{
@@ -601,16 +612,15 @@ button{
 
 #mainContentContainer #watchImgContainer{
   width: 285px;
-  height: 220px;
+  height: 250px;
   margin: 2em;
   margin-top: 5em;
   font-size: small;
+  position: relative;
 }
 
 #mainContentContainer #watchImgContainer h3{
   margin: 0;
-  margin-top: 1.5em;
-  /* margin-bottom: 0; */
 }
 
 #mainContentContainer .mainWatchImgContainer_{
@@ -626,7 +636,9 @@ button{
 }
 
 #mainContentContainer button{
-  margin-top: 1.5em;
+  margin-top: 0.5em;
+  position: absolute;
+  bottom: 0;
 }
 
 .productContainer{
@@ -1018,16 +1030,6 @@ button{
 #checkoutNextStepBtn{
   background-color: black;
   color: white;
-}
-
-.watchText h3{
-  margin: 0;
-  color: black;
-}
-
-.watchText, .watchBrand{
-  text-align: left;
-  margin-left: 0.5em;
 }
 
 
