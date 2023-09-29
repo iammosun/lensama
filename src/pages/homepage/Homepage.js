@@ -43,10 +43,10 @@ const Homepage = () => {
                   See <span className='notBold'>the world</span><br />
                   <span className='notBold'>in</span> Style
                 </h3>
-                <p className='smallFont'><b>Buying wristwatches should
+                <p className='smallFont'><b>Buying glasses should
                   leave you happy and good-looking,
-                  with money in your pocket. Men and women Wristwatches?
-                  We've got your wrist covered.
+                  with money in your pocket. Men and women glasses?
+                  We've got your eyes covered.
                 </b></p>
                 <Link to='/shop' aria-label="Shop now"><b>Shop Now &rarr;</b></Link>
               </div>
